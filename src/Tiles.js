@@ -1,54 +1,78 @@
 import React from 'react';
 import Tile from './Tile';
+import './Tiles.css';
 
 class Tiles extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentPairNumber: null,
-            tiles: [],
+            prevTile: {},
             tilesState: []
         };
     }
 
-    getTiles = () => {
+    tags = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+
+    getTag = () => this.tags.splice(Math.floor(Math.random() * this.tags.length), 1)[0];
+
+    setTilesState = () => {
         const tiles = [];
-        const tilesState = [];
-        for (let i = 1; i <= 16; i++) {
-            const delim = i % 2;
-            tilesState.push(0);
-            tiles.push(
-                <Tile
-                    key={i}
-                    onTileClick={this.handleTileClick}
-                    index={i-1}
-                    pairNumber={delim ? i + 1 : i}
-                    open={tilesState[i-1]}/>
-                );
+
+        for (let i = 0; i < 16; i++) {
+            tiles.push({
+                tag: this.getTag(),
+                isOpen: false
+            });
         }
 
         this.setState({
-            tiles: tiles,
-            tilesState: tilesState
+            tilesState: tiles
         });
     }
 
-    handleTileClick = (pairNumber, index) => {
-        const tile = this.state.tiles[index];
-        const tiles = this.state.tiles;
-        tiles.splice(index, 1, tile);
+    handleTileClick = (tag, index) => {
 
-        this.setState({
-            tiles: tiles
-        });
+        const newState = this.state.tilesState;
+
+        if (this.state.prevTile.tag) {
+
+            if (tag === this.state.prevTile.tag) {
+                newState[index].isOpen = true;
+            } else {
+                newState[this.state.prevTile.index].isOpen = false;
+            }
+
+            this.setState({
+                prevTile: {},
+                tilesState: newState
+            });
+
+        } else {
+            newState[index].isOpen = true;
+            this.setState({
+                prevTile: {tag, index},
+                tilesState: newState
+            })
+        }
     }
 
     componentDidMount() {
-        this.getTiles();
+        this.setTilesState();
     }
 
     render() {
-        return (<div className="Tiles">{this.state.tiles}</div>);
+        return (
+            <div className="Tiles">
+                {this.state.tilesState.map((item, index) => (
+                    <Tile
+                        key={index}
+                        index={index}
+                        tag={item.tag}
+                        isOpen={item.isOpen}
+                        onTileClick={this.handleTileClick} />
+                ))}
+            </div>
+        );
     }
 }
 

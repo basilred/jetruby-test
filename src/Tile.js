@@ -5,25 +5,26 @@ class Tile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            hasPair: false,
-            isOpen: false
+            // hasPair: false,
+            // isOpen: false
         }
     }
 
     handleClick = () => {
-        if (this.state.isOpen) {
+        if (this.props.isOpen) {
             return;
-        } else {
-            this.setState({
-                isOpen: true,
-            });
         }
 
-        this.props.onTileClick(this.props.pairNumber, this.props.index);
+        this.props.onTileClick(this.props.tag, this.props.index);
     }
 
     render() {
-        return (<div className="Tile" onClick={this.handleClick}>{this.props.index}</div>);
+        let classNames = "Tile";
+        if (this.props.isOpen) {
+            classNames += " Tile_opened";
+        }
+
+        return (<div className={classNames} onClick={this.handleClick}>{this.props.tag}</div>);
     }
 }
 
