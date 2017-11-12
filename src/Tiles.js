@@ -6,7 +6,7 @@ class Tiles extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            prevTile: {},
+            pairTiles: [],
             tilesState: []
         };
     }
@@ -33,26 +33,32 @@ class Tiles extends React.Component {
     handleTileClick = (tag, index) => {
 
         const newState = this.state.tilesState;
+        const newPairTile = this.state.pairTiles;
 
-        if (this.state.prevTile.tag) {
+        newState[index].isOpen = true;
+        newPairTile.push({tag, index});
 
-            if (tag === this.state.prevTile.tag) {
-                newState[index].isOpen = true;
+        this.setState({
+            pairTiles: newPairTile,
+            tilesState: newState
+        });
+
+        if (this.state.pairTiles.length === 2) {
+            if (tag !== this.state.pairTiles[0].tag) {
+                setTimeout(() => {
+                    newState[this.state.pairTiles[0].index].isOpen = false;
+                    newState[this.state.pairTiles[1].index].isOpen = false;
+
+                    this.setState({
+                        pairTiles: [],
+                        tilesState: newState
+                    });
+                }, 500);
             } else {
-                newState[this.state.prevTile.index].isOpen = false;
+                this.setState({
+                    pairTiles: []
+                });
             }
-
-            this.setState({
-                prevTile: {},
-                tilesState: newState
-            });
-
-        } else {
-            newState[index].isOpen = true;
-            this.setState({
-                prevTile: {tag, index},
-                tilesState: newState
-            })
         }
     }
 
