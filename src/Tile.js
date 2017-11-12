@@ -2,14 +2,6 @@ import React from 'react';
 import './Tile.css';
 
 class Tile extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            // hasPair: false,
-            // isOpen: false
-        }
-    }
-
     handleClick = () => {
         if (this.props.isOpen) {
             return;
