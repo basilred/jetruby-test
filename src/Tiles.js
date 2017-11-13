@@ -6,6 +6,8 @@ class Tiles extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            round: 1,
+            hasFreePair: 8,
             pairTiles: [],
             tilesState: []
         };
@@ -50,12 +52,16 @@ class Tiles extends React.Component {
                     newState[this.state.pairTiles[1].index].isOpen = false;
 
                     this.setState({
+                        round: this.state.round += 1,
                         pairTiles: [],
                         tilesState: newState
                     });
                 }, 500);
             } else {
+                let countDown = this.state.hasFreePair -= 1;
                 this.setState({
+                    round: countDown && (this.state.round += 1),
+                    hasFreePair: countDown,
                     pairTiles: []
                 });
             }
@@ -68,15 +74,18 @@ class Tiles extends React.Component {
 
     render() {
         return (
-            <div className="Tiles">
-                {this.state.tilesState.map((item, index) => (
-                    <Tile
-                        key={index}
-                        index={index}
-                        tag={item.tag}
-                        isOpen={item.isOpen}
-                        onTileClick={this.handleTileClick} />
-                ))}
+            <div>
+                <div className="Tiles">
+                    {this.state.tilesState.map((item, index) => (
+                        <Tile
+                            key={index}
+                            index={index}
+                            tag={item.tag}
+                            isOpen={item.isOpen}
+                            onTileClick={this.handleTileClick} />
+                    ))}
+                </div>
+                <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : 'You won the game!'}</span>
             </div>
         );
     }
