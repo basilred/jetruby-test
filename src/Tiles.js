@@ -34,8 +34,8 @@ class Tiles extends React.Component {
 
     handleTileClick = (tag, index) => {
 
-        const newState = this.state.tilesState;
-        const newPairTile = this.state.pairTiles;
+        const newState = [...this.state.tilesState];
+        const newPairTile = [...this.state.pairTiles];
 
         newState[index].isOpen = true;
         newPairTile.push({tag, index});
@@ -45,22 +45,22 @@ class Tiles extends React.Component {
             tilesState: newState
         });
 
-        if (this.state.pairTiles.length === 2) {
-            if (tag !== this.state.pairTiles[0].tag) {
+        if (newPairTile.length === 2) {
+            if (tag !== newPairTile[0].tag) {
                 setTimeout(() => {
-                    newState[this.state.pairTiles[0].index].isOpen = false;
-                    newState[this.state.pairTiles[1].index].isOpen = false;
+                    newState[newPairTile[0].index].isOpen = false;
+                    newState[newPairTile[1].index].isOpen = false;
 
                     this.setState({
-                        round: this.state.round += 1,
+                        round: this.state.round + 1,
                         pairTiles: [],
                         tilesState: newState
                     });
                 }, 500);
             } else {
-                let countDown = this.state.hasFreePair -= 1;
+                let countDown = this.state.hasFreePair - 1;
                 this.setState({
-                    round: countDown && (this.state.round += 1),
+                    round: countDown && (this.state.round + 1),
                     hasFreePair: countDown,
                     pairTiles: []
                 });
