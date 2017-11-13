@@ -13,7 +13,7 @@ class Tiles extends React.Component {
         };
     }
 
-    tags = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+    tags = ['#75c5d7', '#75c5d7', '#419ba9', '#419ba9', '#77c362', '#77c362', '#c5d837', '#c5d837', '#f6d725', '#f6d725', '#f48c22', '#f48c22', '#ea66a2', '#ea66a2', '#c160a7', '#c160a7'];
 
     getTag = () => this.tags.splice(Math.floor(Math.random() * this.tags.length), 1)[0];
 
