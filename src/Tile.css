@@ -4,14 +4,11 @@
     margin: 10px;
     background-color: lightblue;
     display: inline-block;
-    color: transparent;
-    font-size: 2em;
-    line-height: 100px;
     cursor: pointer;
+    opacity: .5;
     transition: .2s;
 }
 
 .Tile_opened {
-    background-color: orange;
-    color: black;
+    opacity: 1;
 }

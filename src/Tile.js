@@ -16,7 +16,12 @@ class Tile extends React.Component {
             classNames += " Tile_opened";
         }
 
-        return (<div className={classNames} onClick={this.handleClick}>{this.props.tag}</div>);
+        return (
+            <div
+                className={classNames}
+                onClick={this.handleClick}
+                style={{backgroundColor: this.props.isOpen && this.props.tag}} />
+            );
     }
 }
 
