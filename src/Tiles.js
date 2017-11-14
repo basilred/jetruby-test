@@ -60,7 +60,7 @@ class Tiles extends React.Component {
             } else {
                 let countDown = this.state.hasFreePair - 1;
                 this.setState({
-                    round: countDown && (this.state.round + 1),
+                    round: countDown ? (this.state.round + 1) : this.state.round,
                     hasFreePair: countDown,
                     pairTiles: []
                 });
@@ -85,7 +85,7 @@ class Tiles extends React.Component {
                             onTileClick={this.handleTileClick} />
                     ))}
                 </div>
-                <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : 'You won the game!'}</span>
+                <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : `You won the game in ${this.state.round} rounds!`}</span>
             </div>
         );
     }
