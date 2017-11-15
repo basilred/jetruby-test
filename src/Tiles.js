@@ -9,11 +9,11 @@ class Tiles extends React.Component {
             round: 1,
             hasFreePair: 8,
             pairTiles: [],
-            tilesState: []
+            tilesState: [],
+            tags: ['#75c5d7', '#75c5d7', '#419ba9', '#419ba9', '#77c362', '#77c362', '#c5d837', '#c5d837', '#f6d725', '#f6d725', '#f48c22', '#f48c22', '#ea66a2', '#ea66a2', '#c160a7', '#c160a7']
         };
+        this.tags = [...this.state.tags];
     }
-
-    tags = ['#75c5d7', '#75c5d7', '#419ba9', '#419ba9', '#77c362', '#77c362', '#c5d837', '#c5d837', '#f6d725', '#f6d725', '#f48c22', '#f48c22', '#ea66a2', '#ea66a2', '#c160a7', '#c160a7'];
 
     getTag = () => this.tags.splice(Math.floor(Math.random() * this.tags.length), 1)[0];
 
@@ -68,14 +68,21 @@ class Tiles extends React.Component {
         }
     }
 
+    handleButtonClick = () => {
+        this.setState({...this.savedState});
+        this.tags = [...this.state.tags];
+        this.setTilesState();
+    }
+
     componentDidMount() {
         this.setTilesState();
+        this.savedState = {...this.state};
     }
 
     render() {
         return (
-            <div>
-                <div className="Tiles">
+            <div className="Tiles">
+                <div className="Tiles-board">
                     {this.state.tilesState.map((item, index) => (
                         <Tile
                             key={index}
@@ -85,7 +92,11 @@ class Tiles extends React.Component {
                             onTileClick={this.handleTileClick} />
                     ))}
                 </div>
-                <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : `You won the game in ${this.state.round} rounds!`}</span>
+                <div className="Controls">
+                    <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : `You won the game in ${this.state.round} rounds!`}</span>
+                    {!this.state.hasFreePair &&
+                        <button className="Controls-button" onClick={this.handleButtonClick}>New Game</button>}
+                </div>
             </div>
         );
     }

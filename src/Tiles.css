@@ -2,3 +2,26 @@
     width: 480px;
     margin: 10px auto;
 }
+
+.Controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    height: 2em;
+}
+
+.Controls-button {
+    font-size: inherit;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 3px;
+}
+
+.Controls-button:hover {
+    border-color: rgba(0, 0, 0, .3);
+}
+
+.Controls-button:active {
+    background-color: #ffec9b;
+}
