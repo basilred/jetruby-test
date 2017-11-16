@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import './Tile.css';
 
 class Tile extends React.Component {
@@ -11,14 +12,9 @@ class Tile extends React.Component {
     }
 
     render() {
-        let classNames = "Tile";
-        if (this.props.isOpen) {
-            classNames += " Tile_opened";
-        }
-
         return (
             <div
-                className={classNames}
+                className={cn("Tile", this.props.isOpen && "Tile_opened")}
                 onClick={this.handleClick}
                 style={{backgroundColor: this.props.isOpen && this.props.tag}} />
             );
