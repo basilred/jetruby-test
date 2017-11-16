@@ -13,6 +13,7 @@ class Tiles extends React.Component {
             tags: ['#75c5d7', '#75c5d7', '#419ba9', '#419ba9', '#77c362', '#77c362', '#c5d837', '#c5d837', '#f6d725', '#f6d725', '#f48c22', '#f48c22', '#ea66a2', '#ea66a2', '#c160a7', '#c160a7']
         };
         this.tags = [...this.state.tags];
+        this.throttle = false;
     }
 
     getTag = () => this.tags.splice(Math.floor(Math.random() * this.tags.length), 1)[0];
@@ -34,6 +35,8 @@ class Tiles extends React.Component {
 
     handleTileClick = (tag, index) => {
 
+        if (this.throttle) return;
+
         const newState = [...this.state.tilesState];
         const newPairTile = [...this.state.pairTiles];
 
@@ -47,6 +50,8 @@ class Tiles extends React.Component {
 
         if (newPairTile.length === 2) {
             if (tag !== newPairTile[0].tag) {
+                this.throttle = true;
+
                 setTimeout(() => {
                     newState[newPairTile[0].index].isOpen = false;
                     newState[newPairTile[1].index].isOpen = false;
@@ -56,6 +61,8 @@ class Tiles extends React.Component {
                         pairTiles: [],
                         tilesState: newState
                     });
+
+                    this.throttle = false;
                 }, 500);
             } else {
                 let countDown = this.state.hasFreePair - 1;
