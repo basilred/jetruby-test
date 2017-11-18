@@ -16,7 +16,7 @@ class Tile extends React.Component {
             <div
                 className={cn("Tile", this.props.isOpen && "Tile_opened")}
                 onClick={this.handleClick}
-                style={{backgroundColor: this.props.isOpen && this.props.tag}} />
+                style={{backgroundColor: this.props.isOpen && this.props.tag.color}} />
             );
     }
 }
