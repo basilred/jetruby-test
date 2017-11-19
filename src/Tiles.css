@@ -5,10 +5,17 @@
 
 .Controls {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-wrap: wrap;
     padding: 10px;
+}
+
+.Controls__round {
     height: 2em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 1em;
 }
 
 .Controls-button {
@@ -24,4 +31,14 @@
 
 .Controls-button:active {
     background-color: #ffec9b;
+}
+
+.Controls__easy {
+    width: 100%;
+    display: flex;
+    align-items: baseline;
+}
+
+.Controls__easy input[type="checkbox"] {
+    margin-right: 1em;
 }

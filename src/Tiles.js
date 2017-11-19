@@ -10,7 +10,24 @@ class Tiles extends React.Component {
             hasFreePair: 8,
             pairTiles: [],
             tilesState: [],
-            tags: ['#75c5d7', '#75c5d7', '#419ba9', '#419ba9', '#77c362', '#77c362', '#c5d837', '#c5d837', '#f6d725', '#f6d725', '#f48c22', '#f48c22', '#ea66a2', '#ea66a2', '#c160a7', '#c160a7']
+            tags: [
+                { color: '#75c5d7', val: 1 },
+                { color: '#75c5d7', val: 1 },
+                { color: '#419ba9', val: 2 },
+                { color: '#419ba9', val: 2 },
+                { color: '#77c362', val: 3 },
+                { color: '#77c362', val: 3 },
+                { color: '#c5d837', val: 4 },
+                { color: '#c5d837', val: 4 },
+                { color: '#f6d725', val: 5 },
+                { color: '#f6d725', val: 5 },
+                { color: '#f48c22', val: 6 },
+                { color: '#f48c22', val: 6 },
+                { color: '#ea66a2', val: 7 },
+                { color: '#ea66a2', val: 7 },
+                { color: '#c160a7', val: 8 },
+                { color: '#c160a7', val: 8 },
+            ]
         };
         this.tags = [...this.state.tags];
         this.throttle = false;
@@ -49,7 +66,7 @@ class Tiles extends React.Component {
         });
 
         if (newPairTile.length === 2) {
-            if (tag !== newPairTile[0].tag) {
+            if (tag.val !== newPairTile[0].tag['val']) {
                 this.throttle = true;
 
                 setTimeout(() => {
@@ -81,6 +98,12 @@ class Tiles extends React.Component {
         this.setTilesState();
     }
 
+    handleCheckbox = (e) => {
+        this.setState({
+            simpleMode: e.target.checked ? true : false
+        });
+    };
+
     componentDidMount() {
         this.setTilesState();
         this.savedState = {...this.state};
@@ -95,14 +118,21 @@ class Tiles extends React.Component {
                             key={index}
                             index={index}
                             tag={item.tag}
+                            simpleMode={this.state.simpleMode}
                             isOpen={item.isOpen}
                             onTileClick={this.handleTileClick} />
                     ))}
                 </div>
+
                 <div className="Controls">
-                    <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : `You won the game in ${this.state.round} rounds!`}</span>
-                    {!this.state.hasFreePair &&
-                        <button className="Controls-button" onClick={this.handleButtonClick}>New Game</button>}
+                    <div className="Controls__round">
+                        <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : `You won the game in ${this.state.round} rounds!`}</span>
+                        {!this.state.hasFreePair &&
+                            <button className="Controls-button" onClick={this.handleButtonClick}>New Game</button>}
+                    </div>
+                    <label className="Controls__easy">
+                        <input type="checkbox" onChange={this.handleCheckbox}/>Simplified version
+                    </label>
                 </div>
             </div>
         );
