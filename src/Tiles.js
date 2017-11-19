@@ -116,10 +116,16 @@ class Tiles extends React.Component {
                             onTileClick={this.handleTileClick} />
                     ))}
                 </div>
+
                 <div className="Controls">
-                    <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : `You won the game in ${this.state.round} rounds!`}</span>
-                    {!this.state.hasFreePair &&
-                        <button className="Controls-button" onClick={this.handleButtonClick}>New Game</button>}
+                    <div className="Controls__round">
+                        <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : `You won the game in ${this.state.round} rounds!`}</span>
+                        {!this.state.hasFreePair &&
+                            <button className="Controls-button" onClick={this.handleButtonClick}>New Game</button>}
+                    </div>
+                    <label className="Controls__easy">
+                        <input type="checkbox" />Simplified version
+                    </label>
                 </div>
             </div>
         );
