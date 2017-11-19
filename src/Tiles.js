@@ -98,6 +98,12 @@ class Tiles extends React.Component {
         this.setTilesState();
     }
 
+    handleCheckbox = (e) => {
+        this.setState({
+            simpleMode: e.target.checked ? true : false
+        });
+    };
+
     componentDidMount() {
         this.setTilesState();
         this.savedState = {...this.state};
@@ -112,6 +118,7 @@ class Tiles extends React.Component {
                             key={index}
                             index={index}
                             tag={item.tag}
+                            simpleMode={this.state.simpleMode}
                             isOpen={item.isOpen}
                             onTileClick={this.handleTileClick} />
                     ))}
@@ -124,7 +131,7 @@ class Tiles extends React.Component {
                             <button className="Controls-button" onClick={this.handleButtonClick}>New Game</button>}
                     </div>
                     <label className="Controls__easy">
-                        <input type="checkbox" />Simplified version
+                        <input type="checkbox" onChange={this.handleCheckbox}/>Simplified version
                     </label>
                 </div>
             </div>

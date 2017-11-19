@@ -7,6 +7,10 @@
     cursor: pointer;
     opacity: .5;
     transition: .2s;
+    font-size: 4em;
+    line-height: 100px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .Tile_opened {
