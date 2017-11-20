@@ -4,14 +4,20 @@
     margin: 10px;
     background-color: lightgrey;
     display: inline-block;
-    cursor: pointer;
+    /*cursor: pointer;*/
     opacity: .5;
     transition: .2s;
     font-size: 4rem;
     line-height: 100px;
     text-align: center;
     font-weight: bold;
+    border: none;
+    outline: none;
 }
+
+/*.Tile:focus {
+    box-shadow: 0 0 4px 2px black;
+}*/
 
 .Tile_opened {
     opacity: 1;

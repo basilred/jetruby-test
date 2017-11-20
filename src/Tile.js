@@ -13,7 +13,7 @@ class Tile extends React.Component {
 
     render() {
         return (
-            <div
+            <button
                 className={cn("Tile", this.props.isOpen && "Tile_opened")}
                 onClick={this.handleClick}
                 style={
@@ -23,7 +23,7 @@ class Tile extends React.Component {
                     }
                 }>
                 {this.props.tag.val}
-            </div>
+            </button>
             );
     }
 }
