@@ -93,7 +93,10 @@ class Tiles extends React.Component {
     }
 
     handleButtonClick = () => {
-        this.setState({ tilesState: this.state.tilesState.map(item => ({ isOpen: false, ...item })) });
+        this.setState({ tilesState: this.state.tilesState.map(item => {
+            item.isOpen = false;
+            return item;
+        })});
         setTimeout(() => {
             this.setState({...this.savedState});
             this.tags = [...this.state.tags];
