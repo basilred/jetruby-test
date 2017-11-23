@@ -7,7 +7,7 @@
     cursor: pointer;
     opacity: .5;
     transition: .2s;
-    font-size: 4em;
+    font-size: 4rem;
     line-height: 100px;
     text-align: center;
     font-weight: bold;
@@ -15,4 +15,14 @@
 
 .Tile_opened {
     opacity: 1;
+}
+
+@media screen and (max-width: 480px) {
+    .Tile {
+        --between: 1px;
+        width: calc(25vw - var(--between) * 2);
+        height: calc(25vw - var(--between) * 2);
+        margin: var(--between);
+        line-height: 25vw;
+    }
 }
