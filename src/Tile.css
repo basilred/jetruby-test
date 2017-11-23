@@ -15,9 +15,9 @@
     outline: none;
 }
 
-/*.Tile:focus {
+.Tile:focus {
     box-shadow: 0 0 4px 2px black;
-}*/
+}
 
 .Tile_opened {
     opacity: 1;
@@ -30,5 +30,9 @@
         height: calc(25vw - var(--between) * 2);
         margin: var(--between);
         line-height: 25vw;
+    }
+
+    .Tile:focus {
+        box-shadow: none;
     }
 }
