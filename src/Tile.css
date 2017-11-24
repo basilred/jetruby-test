@@ -4,7 +4,7 @@
     margin: 10px;
     background-color: lightgrey;
     display: inline-block;
-    /*cursor: pointer;*/
+    cursor: pointer;
     opacity: .5;
     transition: .2s;
     font-size: 4rem;
@@ -29,7 +29,8 @@
         width: calc(25vw - var(--between) * 2);
         height: calc(25vw - var(--between) * 2);
         margin: var(--between);
-        line-height: 25vw;
+        line-height: inherit;
+        cursor: none;
     }
 
     .Tile:focus {

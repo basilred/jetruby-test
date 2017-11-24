@@ -137,7 +137,7 @@ class Tiles extends React.Component {
                             <button className="Controls-button" onClick={this.handleButtonClick}>New Game</button>}
                     </div>
                     <label className="Controls__easy">
-                        <input type="checkbox" onChange={this.handleCheckbox}/>Simplified version
+                        <input className="Controls__checkbox" type="checkbox" onChange={this.handleCheckbox}/>Simplified version
                     </label>
                 </div>
             </div>
