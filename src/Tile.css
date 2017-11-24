@@ -30,7 +30,7 @@
         height: calc(25vw - var(--between) * 2);
         margin: var(--between);
         line-height: inherit;
-        cursor: none;
+        cursor: auto;
     }
 
     .Tile:focus {
