@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
+
 import './Tile.css';
 
 class Tile extends React.Component {
@@ -27,5 +29,12 @@ class Tile extends React.Component {
             );
     }
 }
+
+Tile.propTypes = {
+    simpleMode: PropTypes.bool,
+    isOpen: PropTypes.bool,
+    onTileClick: PropTypes.func,
+    tag: PropTypes.object,
+};
 
 export default Tile;
