@@ -1,6 +1,5 @@
 import React from 'react';
-import Tile from './Tile';
-import './Tiles.css';
+import TilesBoard from './TilesBoard';
 
 class Tiles extends React.Component {
     constructor(props) {
@@ -118,7 +117,7 @@ class Tiles extends React.Component {
     render() {
         return (
             <div className="Tiles">
-                <div className="Tiles-board">
+                {/* <div className="Tiles-board">
                     {this.state.tilesState.map((item, index) => (
                         <Tile
                             key={index}
@@ -128,7 +127,8 @@ class Tiles extends React.Component {
                             isOpen={item.isOpen}
                             onTileClick={this.handleTileClick} />
                     ))}
-                </div>
+                </div> */}
+                <TilesBoard board={this.state.tilesState} isSimpleMode={this.state.simpleMode} onTileClick={this.handleTileClick} />
 
                 <div className="Controls">
                     <div className="Controls__round">
