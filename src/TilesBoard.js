@@ -14,7 +14,7 @@ class TilesBoard extends React.Component {
                         key={index}
                         index={index}
                         tag={item.tag}
-                        simpleMode={this.props.isSimpleMode}
+                        isSimpleMode={this.props.isSimpleMode}
                         isOpen={item.isOpen}
                         onTileClick={this.props.onTileClick} />
                 ))}

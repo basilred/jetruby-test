@@ -21,7 +21,7 @@ class Tile extends React.Component {
                 style={
                     {
                         backgroundColor: this.props.isOpen && this.props.tag.color,
-                        color: this.props.simpleMode && this.props.isOpen ? 'white' : 'transparent'
+                        color: this.props.isSimpleMode && this.props.isOpen ? 'white' : 'transparent'
                     }
                 }>
                 {this.props.tag.val}
@@ -31,7 +31,7 @@ class Tile extends React.Component {
 }
 
 Tile.propTypes = {
-    simpleMode: PropTypes.bool,
+    isSimpleMode: PropTypes.bool,
     isOpen: PropTypes.bool,
     onTileClick: PropTypes.func,
     tag: PropTypes.object,
