@@ -23,11 +23,10 @@ class TilesBoard extends React.Component {
     }
 }
 
-// Tile.propTypes = {
-//     simpleMode: PropTypes.bool,
-//     isOpen: PropTypes.bool,
-//     onTileClick: PropTypes.func,
-//     tag: PropTypes.object,
-// };
+Tile.propTypes = {
+    board: PropTypes.array,
+    isSimpleMode: PropTypes.bool,
+    onTileClick: PropTypes.func,
+};
 
 export default TilesBoard;
