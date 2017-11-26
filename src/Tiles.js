@@ -117,17 +117,6 @@ class Tiles extends React.Component {
     render() {
         return (
             <div className="Tiles">
-                {/* <div className="Tiles-board">
-                    {this.state.tilesState.map((item, index) => (
-                        <Tile
-                            key={index}
-                            index={index}
-                            tag={item.tag}
-                            simpleMode={this.state.simpleMode}
-                            isOpen={item.isOpen}
-                            onTileClick={this.handleTileClick} />
-                    ))}
-                </div> */}
                 <TilesBoard board={this.state.tilesState} isSimpleMode={this.state.simpleMode} onTileClick={this.handleTileClick} />
 
                 <div className="Controls">

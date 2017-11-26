@@ -8,7 +8,7 @@ import './Tiles.css';
 class TilesBoard extends React.Component {
     render() {
         return (
-            <div className="Tiles-board">
+            <div className={cn("Tiles-board")}>
                 {this.props.board.map((item, index) => (
                     <Tile
                         key={index}
