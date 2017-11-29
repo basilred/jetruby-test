@@ -1,5 +1,6 @@
 import React from 'react';
 import TilesBoard from './TilesBoard';
+import Controls from './Controls';
 
 class Tiles extends React.Component {
     constructor(props) {
@@ -119,16 +120,12 @@ class Tiles extends React.Component {
             <div className="Tiles">
                 <TilesBoard board={this.state.tilesState} isSimpleMode={this.state.simpleMode} onTileClick={this.handleTileClick} />
 
-                <div className="Controls">
-                    <div className="Controls__round">
-                        <span className="Round">{this.state.hasFreePair ? `Round ${this.state.round}` : `You won the game in ${this.state.round} rounds!`}</span>
-                        {!this.state.hasFreePair &&
-                            <button className="Controls-button" onClick={this.handleButtonClick}>New Game</button>}
-                    </div>
-                    <label className="Controls__easy">
-                        <input className="Controls__checkbox" type="checkbox" onChange={this.handleCheckbox}/>Simplified version
-                    </label>
-                </div>
+                <Controls
+                    hasFreePair={this.state.hasFreePair}
+                    round={this.state.round}
+                    onNewGameClick={this.handleButtonClick}
+                    onSimpleModeChange={this.handleCheckbox}
+                />
             </div>
         );
     }
