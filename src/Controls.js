@@ -1,6 +1,8 @@
 import React from 'react';
 import './Controls.css';
 
+import Checkbox from './Checkbox';
+
 function Controls(props) {
     return (
         <div className="Controls">
@@ -9,9 +11,10 @@ function Controls(props) {
                 {!props.hasFreePair &&
                     <button className="Controls-button" onClick={props.onNewGameClick}>New Game</button>}
             </div>
-            <label className="Controls__easy">
-                <input className="Controls__checkbox" type="checkbox" onChange={props.onSimpleModeChange}/>Simplified version
-            </label>
+            <Checkbox
+                handleChange={props.onSimpleModeChange}
+                text={`Simplified version`}
+            />
         </div>
     );
 };
