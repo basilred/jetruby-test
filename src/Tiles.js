@@ -10,24 +10,7 @@ class Tiles extends React.Component {
             hasFreePair: 8,
             pairTiles: [],
             tilesState: [],
-            tags: [
-                { color: '#75c5d7', val: 1 },
-                { color: '#75c5d7', val: 1 },
-                { color: '#419ba9', val: 2 },
-                { color: '#419ba9', val: 2 },
-                { color: '#77c362', val: 3 },
-                { color: '#77c362', val: 3 },
-                { color: '#c5d837', val: 4 },
-                { color: '#c5d837', val: 4 },
-                { color: '#f6d725', val: 5 },
-                { color: '#f6d725', val: 5 },
-                { color: '#f48c22', val: 6 },
-                { color: '#f48c22', val: 6 },
-                { color: '#ea66a2', val: 7 },
-                { color: '#ea66a2', val: 7 },
-                { color: '#c160a7', val: 8 },
-                { color: '#c160a7', val: 8 },
-            ]
+            tags: props.tags
         };
         this.tags = [...this.state.tags];
         this.throttle = false;
