@@ -3,47 +3,7 @@
     margin: 10px auto;
 }
 
-.Controls {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 10px;
-}
-
-.Controls__round {
-    height: 2em;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    align-items: center;
-    margin-bottom: 1em;
-}
-
-.Controls-button {
-    font-size: inherit;
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, .2);
-    border-radius: 3px;
-}
-
-.Controls-button:hover {
-    border-color: rgba(0, 0, 0, .3);
-}
-
-.Controls-button:active {
-    background-color: #ffec9b;
-}
-
-.Controls__easy {
-    width: 100%;
-    display: flex;
-    align-items: baseline;
-}
-
-.Controls__checkbox {
-    margin-right: 1em;
-}
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 400px) {
     .Tiles {
         width: 100vw;
         margin: 0;
@@ -54,9 +14,21 @@
         flex-wrap: wrap;
         max-width: 100%;
     }
+}
 
-    .Controls__checkbox {
-        width: 1.5em;
-        height: 1.5em;
+@media screen and (max-height: 400px) {
+    .Tiles {
+        display: flex;
+        width: 100%;
+        margin: 0;
+    }
+
+    .Tiles-board {
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 100vh;
+        flex-basis: 100vh;
+        flex-grow: 1;
+        flex-shrink: 0;
     }
 }
