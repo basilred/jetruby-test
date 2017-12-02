@@ -3,7 +3,7 @@
     margin: 10px auto;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 400px) {
     .Tiles {
         width: 100vw;
         margin: 0;
@@ -13,5 +13,22 @@
         display: flex;
         flex-wrap: wrap;
         max-width: 100%;
+    }
+}
+
+@media screen and (max-height: 400px) {
+    .Tiles {
+        display: flex;
+        width: 100%;
+        margin: 0;
+    }
+
+    .Tiles-board {
+        display: flex;
+        flex-wrap: wrap;
+        min-width: 100vh;
+        flex-basis: 100vh;
+        flex-grow: 1;
+        flex-shrink: 0;
     }
 }

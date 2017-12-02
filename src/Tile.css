@@ -23,11 +23,26 @@
     opacity: 1;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 400px) {
     .Tile {
         --between: 1px;
         width: calc(25vw - var(--between) * 2);
         height: calc(25vw - var(--between) * 2);
+        margin: var(--between);
+        line-height: inherit;
+        cursor: auto;
+    }
+
+    .Tile:focus {
+        box-shadow: none;
+    }
+}
+
+@media screen and (max-height: 400px) {
+    .Tile {
+        --between: 1px;
+        width: calc(25vh - var(--between) * 2);
+        height: calc(25vh - var(--between) * 2);
         margin: var(--between);
         line-height: inherit;
         cursor: auto;
