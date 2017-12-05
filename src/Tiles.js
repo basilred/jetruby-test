@@ -56,30 +56,30 @@ class Tiles extends React.Component {
                     newState[newPairTile[0].index].isOpen = false;
                     newState[newPairTile[1].index].isOpen = false;
 
-                    this.setState({
-                        round: this.state.round + 1,
+                    this.setState(prevState => ({
+                        round: prevState.round + 1,
                         pairTiles: [],
                         tilesState: newState
-                    });
+                    }));
 
                     this.throttle = false;
                 }, 500);
             } else {
                 let countDown = this.state.hasFreePair - 1;
-                this.setState({
-                    round: countDown ? (this.state.round + 1) : this.state.round,
+                this.setState(prevState => ({
+                    round: countDown ? (prevState.round + 1) : prevState.round,
                     hasFreePair: countDown,
                     pairTiles: []
-                });
+                }));
             }
         }
     }
 
     handleButtonClick = () => {
-        this.setState({ tilesState: this.state.tilesState.map(item => {
+        this.setState(prevState => ({ tilesState: prevState.tilesState.map(item => {
             item.isOpen = false;
             return item;
-        })});
+        })}));
         setTimeout(() => {
             this.setState({...this.savedState});
             this.tags = [...this.state.tags];
