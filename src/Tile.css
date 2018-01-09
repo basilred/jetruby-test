@@ -6,11 +6,12 @@
     background-color: lightgrey;
     cursor: pointer;
     opacity: .5;
-    transition: .2s;
+    transition: opacity .2s;
     font-size: 4rem;
     font-weight: bold;
     border: none;
     outline: none;
+    /*animation: disappear 0.2s linear forwards;*/
 }
 
 .Tile:focus {
@@ -19,7 +20,31 @@
 
 .Tile_opened {
     opacity: 1;
+    /*animation: 0.2s appear;*/
+    /*animation: appear 0.2s linear forwards;*/
 }
+
+/*@keyframes appear {
+    from {
+        opacity: .5;
+        color: transparent;
+    }
+    to {
+        opacity: 1;
+        color: white;
+    }
+}
+
+@keyframes disappear {
+    from {
+        opacity: 1;
+        color: white;
+    }
+    to {
+        opacity: .5;
+        color: transparent;
+    }
+}*/
 
 @media screen and (max-width: 400px) {
     .Tile {

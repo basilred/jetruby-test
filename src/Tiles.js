@@ -101,7 +101,11 @@ class Tiles extends React.Component {
     render() {
         return (
             <div className="Tiles">
-                <TilesBoard board={this.state.tilesState} isSimpleMode={this.state.simpleMode} onTileClick={this.handleTileClick} />
+                <TilesBoard
+                    board={this.state.tilesState}
+                    isSimpleMode={this.state.simpleMode}
+                    onTileClick={this.handleTileClick}
+                />
 
                 <Controls
                     hasFreePair={this.state.hasFreePair}

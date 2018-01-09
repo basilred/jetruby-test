@@ -13,11 +13,21 @@ class Tile extends React.Component {
         this.props.onTileClick(this.props.tag, this.props.index);
     }
 
+    handleAnimationEnd = e => {
+        console.log(e.type);
+    }
+
+    handleTransitionEnd = e => {
+        console.log(e.type);
+    }
+
     render() {
         return (
             <button
                 className={cn("Tile", this.props.isOpen && "Tile_opened")}
                 onClick={this.handleClick}
+                onAnimationEnd={this.handleAnimationEnd}
+                onTransitionEnd={this.handleTransitionEnd}
                 style={
                     {
                         backgroundColor: this.props.isOpen && this.props.tag.color,
